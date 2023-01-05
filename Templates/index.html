@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+
+<body>
+ <div class="login">
+	<h1>Predict Diabetes</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+		<input type="number" name="Pregnancies" placeholder="Pregnancies" required="required" min="0" max="'20"/>
+        <input type="number" name="Glucose" placeholder="Glucose" required="required" min="0" max="200" />
+		<input type="number" name="BloodPressure" placeholder="BloodPressure" required="required" min="0" max ="130" />
+        <input type="number" name="SkinThickness" placeholder="SkinThickness" required="required" min="0" max ="100" />
+        <input type="number" name="Insulin" placeholder="Insulin" required="required" min="0" max="850"/>
+        <input type="number" name="BMI" placeholder="BMI" required="required" min="0" max="68" step=".1" />
+        <input type="number" name="DiabetesPedigreeFunction" placeholder="DiabetesPedigreeFunction" required="required" min="0" max="3" step=".001"/>
+        <input type="number" name="Age" placeholder="Age" required="required" min="21" max="81" />
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+ <img src="/static/images/Original.svg" style="width: 400px;position: absolute;bottom: 10px;left: 10px;" alt="Company Logo"/>
+
+</body>
+</html>
